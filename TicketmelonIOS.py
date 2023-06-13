@@ -60,7 +60,17 @@ class TicketMelonSanity:
             if  poco(label=args).exists():
                 log("EVENT",desc="EVENT SEARCH SUCCESSFUL")
     def loginToApp(self):
-            log("Login",desc="LOG INTO THE APPLICATION")
+            log("Login",desc="LOG INTO THE APPLICATION")  
+            if  poco(name="Next").exists():
+                poco(name="Next").click()
+                poco(name="Start Testing").wait_for_appearance()
+                poco(name="Start Testing").click()
+                poco(name="EN").wait_for_appearance()
+                poco(name="EN").click()
+                poco(name="DONE").click()
+                poco(name="Get Started →").wait_for_appearance()
+                poco(name="Get Started →").click()
+            poco(label="Email Address").wait_for_appearance()
             poco(label="Email Address").click()
             text("roan.l@rznet.com")
             poco(label="Password").click()
@@ -178,7 +188,7 @@ class TicketMelonSanity:
         fylename="TmIOS_"+versionNumber+"_"+presentDate
         fylename=fylename.replace(" ","")
         print(fylename)
-        simple_report("/Users/imac/Desktop/Automation/TicketmelonIOS.air",logpath="/var/folders/61/pcsxvxzd07d436tqzysq_vzm0000gn/T/AirtestIDE/scripts/d9d8c9923619c157a701a25c6a5dff02",logfile="/var/folders/61/pcsxvxzd07d436tqzysq_vzm0000gn/T/AirtestIDE/scripts/d9d8c9923619c157a701a25c6a5dff02/log.txt",output="/var/folders/61/pcsxvxzd07d436tqzysq_vzm0000gn/T/AirtestIDE/scripts/d9d8c9923619c157a701a25c6a5dff02/"+fylename+".html")
+        simple_report("/Users/rzqaimac/Desktop/Automation/TicketmelonIOS.air",logpath="/var/folders/qh/k7pz3pjn0hqcscl1vplw96rc0000gn/T/AirtestIDE/scripts/a407a3b5bd425774a7c1da9d6d36975e",logfile="/var/folders/qh/k7pz3pjn0hqcscl1vplw96rc0000gn/T/AirtestIDE/scripts/a407a3b5bd425774a7c1da9d6d36975e/log.txt",output="/var/folders/qh/k7pz3pjn0hqcscl1vplw96rc0000gn/T/AirtestIDE/scripts/a407a3b5bd425774a7c1da9d6d36975e/"+fylename+".html")
         
         self.closeTheExistingApp()
     def numbersToStrings(self,argument):
@@ -225,9 +235,9 @@ class TicketMelonSanity:
     
                 
 Object = TicketMelonSanity()
-#Object.launchTmApp()
-#Object.loginToApp()
-Object.searchEvent("กิจกรรมดูแลช้าง ปางช้างแม่ริม")
-Object.bookTicket()
-Object.ticketHistory("1","Rz normal event - 11/05/2023","yes")
-#Object.logout()
+Object.launchTmApp()
+Object.loginToApp()
+#Object.searchEvent("กิจกรรมดูแลช้าง ปางช้างแม่ริม")
+#Object.bookTicket()
+#Object.ticketHistory("1","Rz normal event - 11/05/2023","yes")
+Object.logout()
